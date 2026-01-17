@@ -78,9 +78,9 @@ class Planet(db.Model):
   __tablename__= "planet"
   
   id: Mapped[int] = mapped_column(primary_key=True)
-  name: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
-  climate: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
-  diameter: Mapped[int] = mapped_column(Integer, unique=True, nullable=False)
+  name: Mapped[str] = mapped_column(String(120), unique=False, nullable=False)
+  climate: Mapped[str] = mapped_column(String(120), unique=False, nullable=False)
+  diameter: Mapped[int] = mapped_column(Integer, unique=False, nullable=False)
   
   # relationships
   characters: Mapped[List["Character"]] = relationship(back_populates="planet")
@@ -90,9 +90,9 @@ class Character(db.Model):
   __tablename__= "character"
   
   id: Mapped[int] = mapped_column(primary_key=True)
-  name: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)
-  lastname: Mapped[str] = mapped_column(String(90), unique=True, nullable=False)
-  height: Mapped[int] = mapped_column(Integer, unique=True, nullable=False)
+  name: Mapped[str] = mapped_column(String(20), unique=False, nullable=False)
+  lastname: Mapped[str] = mapped_column(String(90), unique=False, nullable=False)
+  height: Mapped[int] = mapped_column(Integer, unique=False, nullable=False)
   
   # foreingkeys
   planet_id: Mapped[int] = mapped_column(ForeignKey("planet.id"), nullable=False)
@@ -105,8 +105,8 @@ class Starship(db.Model):
   __tablename__= "starship"
   
   id: Mapped[int] = mapped_column(primary_key=True)
-  name: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
-  crew: Mapped[int] = mapped_column(Integer, unique=True, nullable=False)
+  name: Mapped[str] = mapped_column(String(120), unique=False, nullable=False)
+  crew: Mapped[int] = mapped_column(Integer, unique=False, nullable=False)
   manufacturer: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
 
   #relationship
